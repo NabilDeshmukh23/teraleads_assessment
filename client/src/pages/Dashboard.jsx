@@ -287,14 +287,28 @@ const Dashboard = () => {
             <label className="text-[10px] font-black text-gray-400 tracking-[0.2em]">EMAIL ADDRESS</label>
             <input type="email" className="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:border-blue-500 focus:bg-white transition font-bold text-sm" onChange={e => setFormData({ ...formData, email: e.target.value })} value={formData.email} required disabled={isSubmitting} />
           </div>
-          <div className="flex gap-6">
+
+          <div className="flex flex-col md:flex-row gap-4 md:gap-6">
             <div className="flex-1 space-y-2">
               <label className="text-[10px] font-black text-gray-400 tracking-[0.2em]">DOB</label>
-              <input type="date" className="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:border-blue-500 focus:bg-white transition text-sm font-bold" onChange={e => setFormData({ ...formData, dob: e.target.value })} value={formData.dob} required disabled={isSubmitting} />
+              <input
+                type="date"
+                className="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:border-blue-500 focus:bg-white transition text-sm font-bold"
+                onChange={e => setFormData({ ...formData, dob: e.target.value })}
+                value={formData.dob}
+                required
+                disabled={isSubmitting}
+              />
             </div>
             <div className="flex-[1.5] space-y-2">
               <label className="text-[10px] font-black text-gray-400 tracking-[0.2em]">PHONE</label>
-              <input className="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:border-blue-500 focus:bg-white transition font-bold text-sm" onChange={e => setFormData({ ...formData, phone: e.target.value })} value={formData.phone} required disabled={isSubmitting} />
+              <input
+                className="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:border-blue-500 focus:bg-white transition font-bold text-sm"
+                onChange={e => setFormData({ ...formData, phone: e.target.value })}
+                value={formData.phone}
+                required
+                disabled={isSubmitting}
+              />
             </div>
           </div>
           <div className="space-y-2">
