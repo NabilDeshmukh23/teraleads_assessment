@@ -1,5 +1,5 @@
 const patientService = require('../services/patientService');
-
+const prisma = require('../config/prisma');
 
 exports.listPatients = async (req, res) => {
   try {
