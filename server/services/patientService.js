@@ -56,7 +56,22 @@ exports.createPatient = async (data) => {
   }
 };
 
-// 3. UPDATE 
+exports.getDashboardInsights = async () => {
+  const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
+
+  const [total, recentlyAdded] = await Promise.all([
+    prisma.patient.count(),
+    prisma.patient.count({
+      where: {
+        createdAt: { gte: oneDayAgo }
+      }
+    })
+  ]);
+
+  return { total, recentlyAdded };
+};
+
+
 exports.updatePatient = async (id, data) => {
   try {
     return await prisma.patient.update({
@@ -69,7 +84,7 @@ exports.updatePatient = async (id, data) => {
   }
 };
 
-// 4. DELETE 
+
 exports.deletePatient = async (id) => {
   try {
     return await prisma.patient.delete({

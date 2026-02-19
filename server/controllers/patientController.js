@@ -1,10 +1,10 @@
 const patientService = require('../services/patientService');
 
-// GET /list
+
 exports.listPatients = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
-    const limit = 10;
+   const limit = parseInt(req.query.limit)
     
    
     const search = req.query.search || '';
@@ -22,7 +22,16 @@ exports.listPatients = async (req, res) => {
   }
 };
 
-// POST /add
+exports.getInsights = async (req, res) => {
+  try {
+    const insights = await patientService.getDashboardInsights();
+    res.json(insights);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch dashboard metrics" });
+  }
+};
+
+
 exports.addPatient = async (req, res) => {
   try {
     const patient = await patientService.createPatient(req.body);
@@ -43,7 +52,7 @@ exports.addPatient = async (req, res) => {
   }
 };
 
-// PUT /update/:id
+
 exports.updatePatient = async (req, res) => {
   try {
     const updated = await patientService.updatePatient(req.params.id, req.body);
@@ -56,7 +65,7 @@ exports.updatePatient = async (req, res) => {
   }
 };
 
-// DELETE /delete/:id
+
 exports.deletePatient = async (req, res) => {
   const { id } = req.params;
   const patientId = Number(id);
